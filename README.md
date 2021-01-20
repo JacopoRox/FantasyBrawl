@@ -1,5 +1,5 @@
 # Fantasy Brawl
-#### Video Demo:  <URL HERE>
+#### Video Demo:  <https://youtu.be/4tStpi74BCo>
 #### Description:
 
 ##### Introduction
