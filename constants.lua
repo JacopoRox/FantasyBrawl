@@ -1,3 +1,9 @@
+--[[
+    Fantasy Brawl
+    Author: Jacopo Rossi
+    CS50 final project
+]]
+
 WINDOW_WIDTH = 1280
 WINDOW_HEIGHT = 600
 
@@ -11,3 +17,4 @@ STRIKE = 's'
 RANGED = 'd'
 ENTER = 'return'
 ESC = 'escape'
+UP = 'up'

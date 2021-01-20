@@ -1,17 +1,19 @@
+--[[
+    Fantasy Brawl
+    Author: Jacopo Rossi
+    CS50 final project
+]]
+
 Camera = Class{}
 
 function Camera:init(object)
+    -- the object to be fallowed
     self.object = object
-    self.x = 0
-    self.y = 0
+    -- we only want to fallow our object in the x
+    self.x = WINDOW_WIDTH / 2 - self.object.x
 end
 
-function Camera:update(dt)
-    -- If the object is going right and goes behond the middle of the screen the camera fallows it
-    if self.object.dx > 0 and self.object.x > WINDOW_WIDTH/2 - self.x then
-        self.x = WINDOW_WIDTH / 2 - self.object.x
-    end
-
-    -- Hacks for the camera in order to work on the game (to be removed)
+function Camera:update()
+    -- updates the camera x
     self.x = WINDOW_WIDTH / 2 - self.object.x
 end
