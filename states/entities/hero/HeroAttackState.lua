@@ -1,11 +1,19 @@
+--[[
+    Fantasy Brawl
+    Author: Jacopo Rossi
+    CS50 final project
+]]
+
 HeroAttackState = Class{__includes = BaseState}
 
 function HeroAttackState:init(player)
     self.player = player
     self.level = self.player.level
+    -- animation is set to one random attack animation
     self.player:changeAnimation('attack' .. tostring(math.random(2)))
+    -- the animation speed is equal to the attack speed of the player
     self.player.currentAnimation.interval = self.player.atkspeed
-
+    -- when entering the attack state an hitbox is calculated
     self.hitbox = self.player:calculateHitbox()
 end
 
@@ -14,24 +22,24 @@ function HeroAttackState:update(dt)
     local level = self.level
     local anim = self.player.currentAnimation
     anim:update(dt)
-
+    -- if the hero can move during attacks this logic is executed
     if player.atkmove then
-        if (love.keyboard.isDown(RIGHT) and (LastPressed ~= LEFT or not love.keyboard.isDown(LEFT))) and player.scaleX > 0 then
+        if player:moveRight() and player.scaleX > 0 then
             player.dx = player.speed
-        elseif (love.keyboard.isDown(LEFT) and (LastPressed ~= RIGHT or not love.keyboard.isDown(RIGHT))) and player.scaleX < 0 then
+        elseif player:moveLeft() and player.scaleX < 0 then
             player.dx = -player.speed
         else
             player.dx = 0
         end
 
-        if (love.keyboard.PressedThisFrame(JUMP) or love.keyboard.isDown(JUMP)) and player.dy == 0 then
+        if player:moveUp() and player.dy == 0 then
             player.dy = -player.jump
             player.gravity = GRAVITY
         end
     else
         player.dx = 0
     end
-
+    -- if goes below the floor position is reset
     if player.y > FLOOR then
         player.dy = 0
         player.gravity = 0
@@ -40,7 +48,7 @@ function HeroAttackState:update(dt)
 
     player:updatePosition(dt)
     self:updateHitbox()
-
+    -- if the animation is at the attack frame collisions are checked
     if anim.currentFrame > player.atkframe then
         for k, entity in pairs(level.entities) do
             if self.hitbox:collides(entity.hurtbox) then
@@ -48,7 +56,7 @@ function HeroAttackState:update(dt)
             end
         end
     end
-
+    -- once the animation is player the status is changed
     if anim.timesPlayed == 1 then
         anim.timesPlayed = 0
         if player.dy < 0 then
@@ -64,6 +72,7 @@ function HeroAttackState:update(dt)
 end
 
 function HeroAttackState:updateHitbox()
+    -- updates hitbox based on player position
     local player = self.player
     local hitboxX, hitboxY
 
@@ -80,9 +89,8 @@ end
 
 function HeroAttackState:render()
     local anim = self.player.currentAnimation
-
+    -- renders the current animation
     anim:render(self.player.x + self.player.offsetX, self.player.y + self.player.offsetY,
         self.player.scaleX, self.player.scaleY, true)
     --self.hitbox:render()
-    self.player.healthbar:render()
 end

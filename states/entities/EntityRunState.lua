@@ -1,3 +1,9 @@
+--[[
+    Fantasy Brawl
+    Author: Jacopo Rossi
+    CS50 final project
+]]
+
 EntityRunState = Class{__includes = BaseState}
 
 function EntityRunState:init(entity)
@@ -11,7 +17,7 @@ function EntityRunState:update(dt)
     local entity = self.entity
     local anim = self.entity.currentAnimation
     anim:update(dt)
-
+    -- checks wheter and entity is aggressive or not and makes it behave accordingly
     if self.entity.aggressive then
         self:aggressiveAI()
     else
@@ -88,9 +94,7 @@ end
 
 function EntityRunState:render()
     local anim = self.entity.currentAnimation
-
+    -- renders current animation
     anim:render(self.entity.x + self.entity.offsetX, self.entity.y + self.entity.offsetY, 
         self.entity.scaleX, self.entity.scaleY, true)
-
-    self.entity.healthbar:render()
 end

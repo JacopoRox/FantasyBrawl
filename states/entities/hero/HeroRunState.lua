@@ -1,3 +1,9 @@
+--[[
+    Fantasy Brawl
+    Author: Jacopo Rossi
+    CS50 final project
+]]
+
 HeroRunState = Class{__includes = BaseState}
 
 function HeroRunState:init(player)
@@ -10,20 +16,20 @@ function HeroRunState:update(dt)
     local anim = self.player.currentAnimation
 
     anim:update(dt)
-
-    if love.keyboard.PressedThisFrame(JUMP) or love.keyboard.isDown(JUMP) then
+    -- checks jump input
+    if player:moveUp() then
         player.stateMachine:change('jump')
         player.dy = -player.jump
         player.gravity = GRAVITY
     end
-
-    if love.keyboard.isDown(RIGHT) and (LastPressed ~= LEFT or not love.keyboard.isDown(LEFT)) then
+    -- check left\right movement input
+    if player:moveRight() then
         player.dx = player.speed
 
         if player.scaleX < 0 then
             player.scaleX = -player.scaleX
         end
-    elseif love.keyboard.isDown(LEFT) and (LastPressed ~= RIGHT or not love.keyboard.isDown(RIGHT)) then
+    elseif player:moveLeft() then
         player.dx = -player.speed
 
         if player.scaleX > 0 then
@@ -33,12 +39,12 @@ function HeroRunState:update(dt)
         player.stateMachine:change('idle')
         player.dx = 0
     end
-
-    if love.keyboard.PressedThisFrame(STRIKE) then
+    -- check attack input
+    if player:attack() then
         player.stateMachine:change('attack')
     end
-    
-    if love.keyboard.PressedThisFrame(RANGED) and player.ranged then
+    -- check attack input
+    if player:shoot() then
         player.stateMachine:change('ranged')
     end
     player:updatePosition(dt)
@@ -46,9 +52,7 @@ end
 
 function HeroRunState:render()
     local anim = self.player.currentAnimation
-
+    -- render current animation
     anim:render(self.player.x + self.player.offsetX, self.player.y + self.player.offsetY, 
         self.player.scaleX, self.player.scaleY, true)
-    
-    self.player.healthbar:render()
 end

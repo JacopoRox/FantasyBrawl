@@ -1,10 +1,17 @@
+--[[
+    Fantasy Brawl
+    Author: Jacopo Rossi
+    CS50 final project
+]]
+
 HeroRangedState = Class{__includes = BaseState}
 
 function HeroRangedState:init(player)
     self.player = player
     self.player:changeAnimation('ranged')
+    -- interval of the animation is set to the attack speed of the player
     self.player.currentAnimation.interval = self.player.atkspeed
-    self.hitbox = self.player:calculateHitbox()
+    -- can not move during shooting
     self.player.dx = 0
 end
 
@@ -12,7 +19,7 @@ function HeroRangedState:update(dt)
     local player = self.player
     local anim = self.player.currentAnimation
     anim:update(dt)
-
+    -- prevents going below the ground
     if player.y > FLOOR then
         player.dy = 0
         player.gravity = 0
@@ -20,7 +27,7 @@ function HeroRangedState:update(dt)
     end
 
     player:updatePosition(dt)
-
+    -- once animation is played initiate a projectile and change state
     if anim.timesPlayed == 1 then
         -- initiate a projectile at the end of the animation
         table.insert(self.player.projectiles, Projectile(player))
@@ -39,8 +46,7 @@ end
 
 function HeroRangedState:render()
     local anim = self.player.currentAnimation
-
+    -- render current animation
     anim:render(self.player.x + self.player.offsetX, self.player.y + self.player.offsetY, 
         self.player.scaleX, self.player.scaleY, true)
-    self.player.healthbar:render()
 end
