@@ -1,7 +1,15 @@
+--[[
+    Fantasy Brawl
+    Author: Jacopo Rossi
+    CS50 final project
+]]
+
 Entity = Class{}
 
 function Entity:init(def, player)
+    -- the type of our reference
     self.type = def.type
+    -- a reference to the player if the entity is not the player itself
     self.player = player or nil
 
     -- dimensions for drawing and hitbox
@@ -61,11 +69,13 @@ function Entity:randomSpawn()
 end
 
 function Entity:changeAnimation(name)
+    -- changes the animation and reset the new one
     self.currentAnimation = self.animations[name]
     self.currentAnimation:restart()
 end
 
 function Entity:damage(dmg)
+    -- entity health gets decreased accoding to dmg
     if not self.invulnerable and not self.dead then
         self.health = math.max(0, self.health - dmg)
         self.stateMachine:change('take hit')
@@ -73,6 +83,8 @@ function Entity:damage(dmg)
 end
 
 function Entity:updateProjectiles(dt)
+    -- updates all the projectile owned by the entity
+    -- removing them from the table if they hit self.player
     for i, projectile in ipairs(self.projectiles) do
         projectile:update(dt)
         if self.player.hurtbox:collides(projectile.hitbox) then
@@ -85,12 +97,14 @@ function Entity:updateProjectiles(dt)
 end
 
 function Entity:calculateHurtbox()
+    -- generates and hurtbox
     local hurtboxX, hurtboxY = self.x - self.box.offsetX, self.y - self.box.offsetY
 
     return Box(hurtboxX, hurtboxY, self.width, self.height)
 end
 
 function Entity:calculateHitbox()
+    -- generate and hitbox
     local hitboxX, hitboxY, hitboxWidth, hitboxHeight
 
     if self.scaleX > 0 then
@@ -109,6 +123,7 @@ function Entity:calculateHitbox()
 end
 
 function Entity:generateAnimations(type)
+    -- generate an animation for each texture
     local animationsReturned = {}
 
     for k, v in pairs(gFrames[type]) do
@@ -199,8 +214,12 @@ function Entity:render()
             v:render()
         end
     end
-
+    -- renders the entity at it current state
     self.stateMachine:render()
+    -- renders the healthbar if alive
+    if not self.dead then
+        self.healthbar:render()
+    end
     -- draws hurtbox of the entity if needed during development
-    --self.hurtbox:render()
+    -- self.hurtbox:render()
 end

@@ -1,4 +1,13 @@
+--[[
+    Fantasy Brawl
+    Author: Jacopo Rossi
+    CS50 final project
+]]
+
 Class = require 'class'
+
+require 'constants'
+
 require 'Entity'
 require 'Hero'
 require 'Projectile'
@@ -41,6 +50,7 @@ require 'states/entities/EntityRunState'
 require 'states/entities/EntityDeathState'
 require 'states/entities/EntityTakeHitState'
 
+-- store in memory all the files the game needs
 gTextures = {
     ['warrior'] = {
         ['attack1'] = love.graphics.newImage('spritesheets/warrior/sprites/Attack1.png'),

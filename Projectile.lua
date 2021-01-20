@@ -1,3 +1,9 @@
+--[[
+    Fantasy Brawl
+    Author: Jacopo Rossi
+    CS50 final project
+]]
+
 Projectile = Class{}
 
 function Projectile:init(entity)
@@ -40,17 +46,21 @@ function Projectile:init(entity)
 end
 
 function Projectile:update(dt)
+    -- updates animation
     self.animation:update(dt)
-
+    -- if the projectile needs to fall updates y
     if self.fall then
         self.dy = self.dy + GRAVITY * dt
         self.y = self.y + self.dy * dt
     end
+    -- updates x
     self.x = self.x + self.dx * dt
+    -- updates hitbox according to x and y
     self.hitbox:update(self.x - self.width/2 - self.box.offsetX, self.y - self.box.offsetY)
 end
 
 function Projectile:render()
+    -- renders the projectile
     self.animation:render(self.x, self.y, self.scaleX, self.scaleY)
     --self.hitbox:render()
 end

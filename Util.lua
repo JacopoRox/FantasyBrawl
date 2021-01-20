@@ -1,3 +1,9 @@
+--[[
+    Fantasy Brawl
+    Author: Jacopo Rossi
+    CS50 final project
+]]
+
 -- takes a texture, width, and height of tiles and splits it into quads that can be individually drawn
 function GenerateQuads(sheet, tilewidth, tileheight)
     local sheetWidth = sheet:getWidth() / tilewidth

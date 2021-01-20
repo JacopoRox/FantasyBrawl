@@ -1,3 +1,10 @@
+--[[
+    Fantasy Brawl
+    Author: Jacopo Rossi
+    CS50 final project
+]]
+
+-- raw data the define objects
 GAME_OBJECT_DEFS = {
     ['projectiles'] = {
         ['huntress'] = {
