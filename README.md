@@ -66,6 +66,9 @@ Both enemies and the player go invulnerable after taking damage. Enemies stay in
 An entity is flagged as dead at the end of its death animation. If dead, enemies get removed from the level.entities table: I could have simply prevent their rendering and updating after their death but I decided to remove them from the table to prevent memory wasting (long run could lead to the generation of lots of enemies). When the player itself is flagged as dead the global state machine state is changed to game over and the run is over.
 The global state machine is composed of 5 states, the start state initiate the background and waits for user inputs (Press enter to play is displayed). When enter is pressed the .change function is called (passing in the background so that it keeps scrolling) and we enter the selection state. Here I wanted to display every hero in their idle state but instead of actually initiating 3 objects from the Hero class I decided to only create 3 animation passing in the idle texture and the idle collection of frames of each specific character. A box object is initiated and rendered, it is possible to move it thanks to the selectionstate.movebox function which also update a variable called box.index that allows the box to keep track of what character it is highlighting. When the character is selected (by pressing enter) an actual Hero object is initiated and passed to the play state through the change function and a new run is initiated. At the end of it, from the game over state it is possible to go back to a new selection state in order to allow the changing of the character and start a new run.
 
+##### Download
+You can download the game from [here](https://drive.google.com/file/d/1S5wQfL22Cm_Mc7xcHaygBOiZ86VovC2w/view?usp=sharing). Just unzip the folder and use the .exe file to run the game (you don't need to install LÖVE or anything else).
+
 ##### Commands
 Here's the list of the commands to control your character:
 
