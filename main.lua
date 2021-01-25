@@ -4,7 +4,7 @@
     CS50 final project
 ]]
 
-require 'Dependencies'
+require 'src/Dependencies'
 
 function love.load()
     -- Initialize the pseudo random number generator
