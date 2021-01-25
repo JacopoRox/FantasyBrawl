@@ -246,7 +246,8 @@ gFonts = {
     ['medium-half-elven'] = love.graphics.newFont('fonts/halfelven.ttf', 38),
     ['big-dungeon-font'] = love.graphics.newFont('fonts/DungeonFont.ttf', 80),
     ['medium-dungeon-font'] = love.graphics.newFont('fonts/DungeonFont.ttf', 50),
-    ['small-dungeon-font'] = love.graphics.newFont('fonts/DungeonFont.ttf', 38)
+    ['small-dungeon-font'] = love.graphics.newFont('fonts/DungeonFont.ttf', 38),
+    ['smaller-dungeon-font'] = love.graphics.newFont('fonts/DungeonFont.ttf', 30)
 }
 
 gShaders = {

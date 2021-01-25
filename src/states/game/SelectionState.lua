@@ -57,6 +57,15 @@ function SelectionState:render()
     box:render()
     love.graphics.printf('Press enter to select a hero', gFonts['medium-dungeon-font'],
         0, 100, WINDOW_WIDTH, 'center')
+
+    if box.index ~= 2 then
+        love.graphics.printf(' Arrows : Run\nSpacebar: Jump\nS: Attack', gFonts['smaller-dungeon-font'],
+        0, 450, WINDOW_WIDTH, 'center')
+    else
+        love.graphics.printf(' Arrows : Run\nSpacebar: Jump\nS: Attack\nD: Shoot', gFonts['smaller-dungeon-font'],
+        0, 450, WINDOW_WIDTH, 'center')
+    end
+
     love.graphics.setColor(1, 1, 1)
     -- render the characters' animations
     for k in pairs(anims) do
