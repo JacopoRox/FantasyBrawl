@@ -10,6 +10,8 @@ WINDOW_HEIGHT = 600
 FLOOR = 520
 GRAVITY = 2000
 
+VOLUME = 0.5
+
 JUMP = 'space'
 LEFT = 'left'
 RIGHT = 'right'

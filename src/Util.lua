@@ -25,3 +25,7 @@ function GenerateQuads(sheet, tilewidth, tileheight)
 
     return quads
 end
+-- return RGB values for carmine
+function Carmine()
+    return 150/225, 0/255, 24/255 
+end
