@@ -53,20 +53,12 @@ function SelectionState:render()
     local box = self.box
     local anims = self.animations
     -- render the selection box
-    love.graphics.setColor(150/225, 0/255, 24/255)
+    love.graphics.setColor(CARMINE)
     box:render()
     love.graphics.printf('Press enter to select a hero', gFonts['medium-dungeon-font'],
         0, 100, WINDOW_WIDTH, 'center')
 
-    if box.index ~= 2 then
-        love.graphics.printf(' Arrows : Run\nSpacebar: Jump\nS: Attack', gFonts['smaller-dungeon-font'],
-        0, 450, WINDOW_WIDTH, 'center')
-    else
-        love.graphics.printf(' Arrows : Run\nSpacebar: Jump\nS: Attack\nD: Shoot', gFonts['smaller-dungeon-font'],
-        0, 450, WINDOW_WIDTH, 'center')
-    end
-
-    love.graphics.setColor(1, 1, 1)
+    love.graphics.setColor(WHITE)
     -- render the characters' animations
     for k in pairs(anims) do
         anims[k]:render(k * WINDOW_WIDTH/4, WINDOW_HEIGHT/2, 3, 3)

@@ -10,8 +10,14 @@ WINDOW_HEIGHT = 600
 FLOOR = 520
 GRAVITY = 2000
 
+-- default value
 VOLUME = 0.5
 
+-- colors
+CARMINE = {150/225, 0/255, 24/255}
+WHITE = {1, 1, 1}
+
+-- default action keys
 JUMP = 'space'
 LEFT = 'left'
 RIGHT = 'right'
@@ -20,3 +26,4 @@ RANGED = 'd'
 ENTER = 'return'
 ESC = 'escape'
 UP = 'up'
+DOWN = 'down'

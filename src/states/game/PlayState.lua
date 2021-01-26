@@ -51,10 +51,10 @@ function PlayState:render()
     self.level:render()
     love.graphics.translate(-camera.x, 0)
     -- displays the score and the level the player is in
-    love.graphics.setColor(150/225, 0/255, 24/255)
+    love.graphics.setColor(CARMINE)
     love.graphics.printf('Score: '.. tostring(self.player.score), gFonts['small-dungeon-font'],
         0, 100, WINDOW_WIDTH, 'center')
     love.graphics.printf('Level: '.. tostring(self.level.lvl), gFonts['medium-dungeon-font'],
         0, 20, WINDOW_WIDTH, 'center')
-    love.graphics.setColor(1, 1, 1)
+    love.graphics.setColor(WHITE)
 end
