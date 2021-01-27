@@ -3,4 +3,5 @@ function love.conf(t)
     t.modules.physics = false
     t.window.width = 1280
     t.window.height = 600
+    t.window.resizable = true
 end

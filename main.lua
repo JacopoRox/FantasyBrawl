@@ -13,6 +13,13 @@ function love.load()
 
     love.window.setTitle('Fantasy Brawl')
 
+    -- initialize window with virtual resolution
+    push:setupScreen(VIRTUAL_WIDTH, VIRTUAL_HEIGHT, WINDOW_WIDTH, WINDOW_HEIGHT, {
+        fullscreen = true,
+        resizable = true,
+        vsync = true
+    })
+
     gStateMachine = StateMachine {
         ['start'] = function () return StartState() end,
         ['selection'] = function () return SelectionState() end,
@@ -56,7 +63,12 @@ function love.update(dt)
     love.keyboard.pressed = {}
 end
 
+function love.resize(w, h)
+    push:resize(w, h)
+end
+
 function love.draw()
+    push:apply('start')
     gStateMachine:render()
-    love.graphics.print(tostring(love.timer.getDelta()))
+    push:apply('end')
 end
