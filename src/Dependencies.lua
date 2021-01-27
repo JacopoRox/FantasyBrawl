@@ -33,6 +33,7 @@ require 'src/states/game/SelectionState'
 require 'src/states/game/PlayState'
 require 'src/states/game/GameOverState'
 require 'src/states/game/PauseState'
+require 'src/states/game/MenuState'
 
 require 'src/states/entities/hero/HeroAttackState'
 require 'src/states/entities/hero/HeroRangedState'

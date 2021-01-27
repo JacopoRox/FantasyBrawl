@@ -11,7 +11,6 @@ function love.load()
     math.randomseed(os.time())
     math.random(); math.random(); math.random()
 
-    love.window.setMode(WINDOW_WIDTH, WINDOW_HEIGHT)
     love.window.setTitle('Fantasy Brawl')
 
     gStateMachine = StateMachine {
@@ -59,4 +58,5 @@ end
 
 function love.draw()
     gStateMachine:render()
+    love.graphics.print(tostring(love.timer.getDelta()))
 end
