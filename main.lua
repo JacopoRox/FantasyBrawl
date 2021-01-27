@@ -15,7 +15,7 @@ function love.load()
 
     -- initialize window with virtual resolution
     push:setupScreen(VIRTUAL_WIDTH, VIRTUAL_HEIGHT, WINDOW_WIDTH, WINDOW_HEIGHT, {
-        fullscreen = true,
+        fullscreen = false,
         resizable = true,
         vsync = true
     })
@@ -64,6 +64,7 @@ function love.update(dt)
 end
 
 function love.resize(w, h)
+    WINDOW_WIDTH, WINDOW_HEIGHT = w, h
     push:resize(w, h)
 end
 
