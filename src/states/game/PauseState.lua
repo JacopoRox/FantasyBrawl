@@ -38,8 +38,8 @@ function PauseState:render()
     -- displays that the game is paused
     love.graphics.setColor(CARMINE)
     love.graphics.printf('Pause', gFonts['medium-dungeon-font'],
-        math.floor(0), math.floor(WINDOW_HEIGHT/2 - 50), WINDOW_WIDTH, 'center')
+        math.floor(0), math.floor(VIRTUAL_HEIGHT/2 - 50), VIRTUAL_WIDTH, 'center')
     love.graphics.printf('Press esc to resume', gFonts['small-dungeon-font'],
-        math.floor(0), math.floor(WINDOW_HEIGHT/3 + 100), WINDOW_WIDTH, 'center')
+        math.floor(0), math.floor(VIRTUAL_HEIGHT/3 + 100), VIRTUAL_WIDTH, 'center')
     love.graphics.setColor(WHITE)
 end

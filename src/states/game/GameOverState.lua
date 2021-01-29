@@ -31,10 +31,10 @@ function GameOverState:render()
     -- displays GAME OVER fallowed by the score of the previous run
     love.graphics.setColor(CARMINE)
     love.graphics.printf('GAME OVER', gFonts['big-dungeon-font'],
-        math.floor(0), math.floor(WINDOW_HEIGHT/3), WINDOW_WIDTH, 'center')
+        math.floor(0), math.floor(VIRTUAL_HEIGHT/3 - 100), VIRTUAL_WIDTH, 'center')
     love.graphics.printf('Score: '..tostring(self.player.score), gFonts['medium-dungeon-font'],
-        math.floor(0), math.floor(WINDOW_HEIGHT/3 + 100), WINDOW_WIDTH, 'center')
+        math.floor(0), math.floor(VIRTUAL_HEIGHT/3 + 100), VIRTUAL_WIDTH, 'center')
     love.graphics.printf('Press enter to try again', gFonts['medium-dungeon-font'],
-        math.floor(0), math.floor(WINDOW_HEIGHT/3 + 200), WINDOW_WIDTH, 'center')
+        math.floor(0), math.floor(VIRTUAL_HEIGHT/3 + 200), VIRTUAL_WIDTH, 'center')
     love.graphics.setColor(WHITE)
 end

@@ -29,7 +29,7 @@ function love.load()
     }
     gStateMachine:change('start')
 
-    love.audio.setVolume(VOLUME)
+    love.audio.setVolume(0)
     gSounds['background']:setLooping(true)
     gSounds['background']:play()
 

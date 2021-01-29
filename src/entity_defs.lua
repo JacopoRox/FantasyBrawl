@@ -8,7 +8,7 @@
 ENTITY_DEFS = {
     ['warrior'] = {
         type = 'warrior',
-        x = WINDOW_WIDTH/2,
+        x = VIRTUAL_WIDTH/2,
         y = FLOOR,
         width = 24,
         height = 44,
@@ -29,7 +29,7 @@ ENTITY_DEFS = {
     },
     ['huntress'] = {
         type = 'huntress',
-        x = WINDOW_WIDTH/2,
+        x = VIRTUAL_WIDTH/2,
         y = FLOOR,
         width = 18,
         height = 38,
@@ -50,7 +50,7 @@ ENTITY_DEFS = {
     },
     ['samurai'] = {
         type = 'samurai',
-        x = WINDOW_WIDTH/2,
+        x = VIRTUAL_WIDTH/2,
         y = FLOOR,
         width = 24,
         height = 44,
