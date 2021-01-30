@@ -14,12 +14,9 @@ function love.load()
     love.window.setTitle('Fantasy Brawl')
 
     -- initialize window with virtual resolution
-    push:setupScreen(VIRTUAL_WIDTH, VIRTUAL_HEIGHT, WINDOW_WIDTH, WINDOW_HEIGHT, {
-        fullscreen = false,
-        resizable = true,
-        vsync = true
-    })
+    push:setupScreen(GAME_WIDTH, GAME_HEIGHT, WINDOW_WIDTH, WINDOW_HEIGHT)
 
+    -- initiate global state machine and set it to the start state
     gStateMachine = StateMachine {
         ['start'] = function () return StartState() end,
         ['selection'] = function () return SelectionState() end,

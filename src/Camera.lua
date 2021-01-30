@@ -10,10 +10,10 @@ function Camera:init(object)
     -- the object to be fallowed
     self.object = object
     -- we only want to fallow our object in the x
-    self.x = VIRTUAL_WIDTH / 2 - self.object.x
+    self.x = GAME_WIDTH / 2 - self.object.x
 end
 
 function Camera:update()
     -- updates the camera x
-    self.x = VIRTUAL_WIDTH / 2 - self.object.x
+    self.x = GAME_WIDTH / 2 - self.object.x
 end

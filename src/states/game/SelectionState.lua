@@ -20,7 +20,7 @@ function SelectionState:init()
     end
 
     -- defines selection box
-    self.box = Box(VIRTUAL_WIDTH/4 - 100, VIRTUAL_HEIGHT/2 - 50, 200, 200)
+    self.box = Box(GAME_WIDTH/4 - 100, GAME_HEIGHT/2 - 50, 200, 200)
     self.box.index = 1
 end
 
@@ -56,24 +56,24 @@ function SelectionState:render()
     love.graphics.setColor(CARMINE)
     box:render()
     love.graphics.printf('Press enter to select a hero', gFonts['medium-dungeon-font'],
-        0, 100, VIRTUAL_WIDTH, 'center')
+        0, 100, GAME_WIDTH, 'center')
 
     love.graphics.setColor(WHITE)
     -- render the characters' animations
     for k in pairs(anims) do
-        anims[k]:render(k * VIRTUAL_WIDTH/4, VIRTUAL_HEIGHT/2 + 50, 3, 3)
+        anims[k]:render(k * GAME_WIDTH/4, GAME_HEIGHT/2 + 50, 3, 3)
     end
 end
 
 function SelectionState:movebox(box)
     -- move the selection box to the right
     if love.keyboard.PressedThisFrame(RIGHT) then
-        box.x = math.min(box.x + VIRTUAL_WIDTH/4, VIRTUAL_WIDTH * 3/4 - box.width/2)
+        box.x = math.min(box.x + GAME_WIDTH/4, GAME_WIDTH * 3/4 - box.width/2)
         box.index = math.min(box.index + 1, 3)
     end
     -- move the selection box to the left
     if love.keyboard.PressedThisFrame(LEFT) then
-        box.x = math.max(box.x - VIRTUAL_WIDTH/4, VIRTUAL_WIDTH/4 - box.width/2)
+        box.x = math.max(box.x - GAME_WIDTH/4, GAME_WIDTH/4 - box.width/2)
         box.index = math.max(box.index - 1, 1)
     end
 end

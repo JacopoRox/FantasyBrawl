@@ -42,14 +42,14 @@ function StartState:render()
     -- renders the name of the game
     love.graphics.setColor(CARMINE)
     love.graphics.printf('Fantasy Brawl', gFonts['big-dungeon-font'],
-        0, 100, VIRTUAL_WIDTH, 'center')
+        0, 100, GAME_WIDTH, 'center')
     -- renders an indication on how to start the game
     love.graphics.printf('Play', gFonts['medium-dungeon-font'],
-        0, 250, VIRTUAL_WIDTH, 'center')
+        0, 250, GAME_WIDTH, 'center')
     love.graphics.printf('Options', gFonts['medium-dungeon-font'],
-        0, 350, VIRTUAL_WIDTH, 'center')
+        0, 350, GAME_WIDTH, 'center')
     love.graphics.printf('Exit', gFonts['medium-dungeon-font'],
-        0, 450, VIRTUAL_WIDTH, 'center')
+        0, 450, GAME_WIDTH, 'center')
     self.box:render()
     love.graphics.setColor(WHITE)
 end
