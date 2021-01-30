@@ -30,7 +30,7 @@ function GameOverState:render()
     love.graphics.translate(-camera.x, 0)
     -- displays GAME OVER fallowed by the score of the previous run
     love.graphics.setColor(CARMINE)
-    love.graphics.printf('GAME OVER', gFonts['big-dungeon-font'],
+    love.graphics.printf('Game Over', gFonts['big-dungeon-font'],
         math.floor(0), math.floor(GAME_HEIGHT/3 - 100), GAME_WIDTH, 'center')
     love.graphics.printf('Score: '..tostring(self.player.score), gFonts['medium-dungeon-font'],
         math.floor(0), math.floor(GAME_HEIGHT/3 + 100), GAME_WIDTH, 'center')
