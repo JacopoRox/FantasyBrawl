@@ -20,7 +20,7 @@ function SelectionState:init()
     end
 
     -- defines selection box
-    self.box = Box(WINDOW_WIDTH/4 - 100, VIRTUAL_HEIGHT/2 - 50, 200, 200)
+    self.box = Box(VIRTUAL_WIDTH/4 - 100, VIRTUAL_HEIGHT/2 - 50, 200, 200)
     self.box.index = 1
 end
 
