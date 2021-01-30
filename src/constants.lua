@@ -15,7 +15,9 @@ VOLUME = 0.5
 
 -- colors
 CARMINE = {150/225, 0/255, 24/255}
+SIENNA = {32/225, 0, 0}
 WHITE = {1, 1, 1}
+BLACK = {0, 0, 0}
 
 -- default action keys
 JUMP = 'space'
