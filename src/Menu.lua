@@ -13,7 +13,7 @@ function Menu:update()
         self.def[self.index].color = SIENNA
     elseif love.keyboard.PressedThisFrame(UP) then
         self.def[self.index].color = CARMINE
-        self.index = 4 - math.max(1, (self.index - 1) % (#self.def + 1))
+        self.index = math.max(1, (self.index - 1) % (#self.def + 1))
         self.def[self.index].color = SIENNA
     end
 end

@@ -254,6 +254,7 @@ gFonts = {
 }
 
 require 'src/menu_defs'
+
 gShaders = {
     ['white'] = love.graphics.newShader[[
         vec4 effect(vec4 color, Image texture, vec2 textureCoords, vec2 screenCoords){
