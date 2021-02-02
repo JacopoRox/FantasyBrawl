@@ -14,7 +14,10 @@ end
 function StartState:update(dt)
     -- updates background
     self.background:update(dt)
-    self.menu:update()
+    self.menu:update(dt)
+    if love.keyboard.PressedThisFrame(ENTER) then
+        gStateMachine:change('selection', self.background)
+    end
 end
 
 function StartState:render()
