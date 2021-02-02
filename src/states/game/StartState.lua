@@ -14,7 +14,9 @@ end
 function StartState:update(dt)
     -- updates background
     self.background:update(dt)
+    -- updates the menu
     self.menu:update(dt)
+    -- if ENTER is pressed change the game state to selection
     if love.keyboard.PressedThisFrame(ENTER) then
         gStateMachine:change('selection', self.background)
     end
