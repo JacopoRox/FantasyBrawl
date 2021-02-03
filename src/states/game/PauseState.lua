@@ -7,9 +7,9 @@
 PauseState = Class{__includes = BaseState}
 
 function PauseState:enter(params)
+    self.background = params.background
     self.level = params.level
     self.player = self.level.player
-    self.background = params.background
     self.camera = params.camera
 end
 

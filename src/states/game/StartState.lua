@@ -12,13 +12,20 @@ function StartState:init()
 end
 
 function StartState:update(dt)
+    local index = self.menu:getIndex()
     -- updates background
     self.background:update(dt)
     -- updates the menu
     self.menu:update(dt)
-    -- if ENTER is pressed change the game state to selection
+    -- if ENTER is pressed change the game state according to the menu index
     if love.keyboard.PressedThisFrame(ENTER) then
-        gStateMachine:change('selection', self.background)
+        if index == 1 then
+            gStateMachine:change('selection', self.background)
+        elseif index == 2 then
+            return
+        else
+            return
+        end
     end
 end
 

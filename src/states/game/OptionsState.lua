@@ -4,15 +4,16 @@
     CS50 final project
 ]]
 
-MenuState = Class{__includes = BaseState}
+OptionsState = Class{__includes = BaseState}
 
-function MenuState:init()
+function OptionsState:init()
     self.volume = VOLUME
     self.width = 100
     self.height = 20
+    self.menu = Menu(MENU_DEFS['options'])
 end
 
-function MenuState:enter(params)
+function OptionsState:enter(params)
     self.background = params.background
     self.level = params.level or nil
     if self.level then
@@ -21,11 +22,11 @@ function MenuState:enter(params)
     end
 end
 
-function MenuState:update(dt)
+function OptionsState:update(dt)
     self.background:update(dt)
 end
 
-function MenuState:displayVolume()
+function OptionsState:displayVolume()
     love.graphics.printf('Volume:', gFonts['small-dungeon-font'],
         math.floor(0), math.floor(GAME_HEIGHT/2), GAME_WIDTH, 'center')
 
@@ -35,12 +36,12 @@ function MenuState:displayVolume()
     love.graphics.setColor(WHITE)
 end
 
-function MenuState:displayCommands()
+function OptionsState:displayCommands()
     love.graphics.printf(' Arrows : Run\nSpacebar: Jump\nS: Attack\nD: Shoot', gFonts['smaller-dungeon-font'],
         0, 450, GAME_WIDTH, 'center')
 end
 
-function MenuState:render()
+function OptionsState:render()
     self.background:render()
     if self.level then
         love.graphics.translate(self.camera.x, 0)
