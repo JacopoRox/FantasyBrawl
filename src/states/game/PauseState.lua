@@ -7,7 +7,6 @@
 PauseState = Class{__includes = BaseState}
 
 function PauseState:enter(params)
-    self.background = params.background
     self.level = params.level
     self.player = self.level.player
     self.camera = params.camera
@@ -29,7 +28,7 @@ end
 function PauseState:render()
     local camera = self.camera
 
-    self.background:render()
+    gBackground:render()
     -- camera fallows the player
     love.graphics.translate(camera.x, 0)
     self.player:render()

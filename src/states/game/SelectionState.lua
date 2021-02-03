@@ -24,20 +24,15 @@ function SelectionState:init()
     self.box.index = 1
 end
 
-function SelectionState:enter(background)
-    self.background = background
-end
-
 function SelectionState:update(dt)
     -- updates the background and the position of the selection box
-    self.background:update(dt)
+    gBackground:update(dt)
     self:movebox(self.box)
     -- if ENTER is pressed an hero is selected and a Hero object is initiated
     -- the game state is also changed
     if love.keyboard.PressedThisFrame(ENTER) then
         gStateMachine:change('play', {
-            player = Hero(ENTITY_DEFS[self.types[self.box.index]]),
-            background = self.background
+            player = Hero(ENTITY_DEFS[self.types[self.box.index]])
         })
     end
     -- updates the animation of the heroes
@@ -48,7 +43,7 @@ end
 
 function SelectionState:render()
     -- render the background
-    self.background:render()
+    gBackground:render()
 
     local box = self.box
     local anims = self.animations

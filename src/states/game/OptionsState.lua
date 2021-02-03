@@ -13,17 +13,9 @@ function OptionsState:init()
     self.menu = Menu(MENU_DEFS['options'])
 end
 
-function OptionsState:enter(params)
-    self.background = params.background
-    self.level = params.level or nil
-    if self.level then
-        self.player = self.level.player
-        self.camera = params.camera
-    end
-end
-
 function OptionsState:update(dt)
-    self.background:update(dt)
+    gBackground:update(dt)
+    self.menu:update(dt)
 end
 
 function OptionsState:displayVolume()
@@ -42,11 +34,13 @@ function OptionsState:displayCommands()
 end
 
 function OptionsState:render()
-    self.background:render()
+    gBackground:render()
     if self.level then
+        love.graphics.push()
         love.graphics.translate(self.camera.x, 0)
         self.player:render()
         self.level:render()
-        love.graphics.translate(-self.camera.x, 0)
+        love.graphics.pop()
     end
+    self.menu:render()
 end

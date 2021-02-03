@@ -7,23 +7,21 @@
 GameOverState = Class{__includes = BaseState}
 
 function GameOverState:enter(params)
-    self.background = params.background
     self.player = params.player
     self.camera = params.camera
 end
 
 function GameOverState:update(dt)
-    self.background:update(dt)
     -- enter selection state if enter is pressed
     if love.keyboard.PressedThisFrame(ENTER) then
-        self.background.stateMachine:change('selection')
-        gStateMachine:change('selection', self.background)
+        gBackground.stateMachine:change('selection')
+        gStateMachine:change('selection')
     end
 end
 
 function GameOverState:render()
     local camera = self.camera
-    self.background:render()
+    gBackground:render()
     -- translate coordinate to fallow the player
     love.graphics.translate(camera.x, 0)
     self.player:render()

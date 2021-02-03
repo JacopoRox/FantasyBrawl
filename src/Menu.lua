@@ -10,6 +10,7 @@ function Menu:init(def)
     self.index = 1
 
     -- the options to be displayed
+    self.title = def.title
     self.strings = def.strings
 
     -- defines how fast options can be switched, default is 0.2 seconds
@@ -19,6 +20,11 @@ function Menu:init(def)
     -- colors used to render the options
     self.color = def.color or {0, 0, 0}
     self.selection = def.selection or {1, 1, 1}
+
+    self.stateMachine = StateMachine {
+        ['start'] = function () return MenuStartState(self) end,
+        ['options'] = function () return MenuOptionsState(self) end
+    }
 end
 
 function Menu:update(dt)
@@ -33,6 +39,17 @@ function Menu:update(dt)
         if self.index == 0 then self.index = 3 end
         self.timer = 0
     end
+
+    -- if ENTER is pressed change the game state according to the menu index
+    if love.keyboard.PressedThisFrame(ENTER) then
+        if index == 1 then
+            gStateMachine:change('selection')
+        elseif index == 2 then
+            gStateMachine:change('options')
+        else
+            love.event.quit()
+        end
+    end
 end
 
 function Menu:getIndex()
@@ -40,6 +57,10 @@ function Menu:getIndex()
 end
 
 function Menu:render()
+    local title = self.title
+
+    -- renders title
+    love.graphics.printf({self.color, title.string}, title.font, title.x, title.y, title.limit, title.align)
     -- renders all options
     for k, v in pairs(self.strings) do
         if k ~= self.index then
