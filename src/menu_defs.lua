@@ -50,7 +50,7 @@ MENU_DEFS = {
             limit = GAME_WIDTH,
             align = 'center',
             string = 'Menu',
-            font = gFonts['big-dungeon-font'],
+            font = gFonts['great-dungeon-font'],
         },
         ['strings'] = {
             [1] = {

@@ -30,12 +30,14 @@ require 'src/states/BaseState'
 require 'src/states/background/BackgroundPlayState'
 require 'src/states/background/BackgroundSelectionState'
 
+require 'src/states/menu/MenuStartState'
+require 'src/states/menu/MenuOptionsState'
+
 require 'src/states/game/StartState'
 require 'src/states/game/SelectionState'
 require 'src/states/game/PlayState'
 require 'src/states/game/GameOverState'
 require 'src/states/game/PauseState'
-require 'src/states/game/OptionsState'
 
 require 'src/states/entities/hero/HeroAttackState'
 require 'src/states/entities/hero/HeroRangedState'
@@ -248,6 +250,7 @@ gFonts = {
     ['big-half-elven'] = love.graphics.newFont('fonts/halfelven.ttf', 72),
     ['medium-half-elven'] = love.graphics.newFont('fonts/halfelven.ttf', 38),
     ['big-dungeon-font'] = love.graphics.newFont('fonts/DungeonFont.ttf', 130),
+    ['great-dungeon-font'] = love.graphics.newFont('fonts/DungeonFont.ttf', 100),
     ['medium-dungeon-font'] = love.graphics.newFont('fonts/DungeonFont.ttf', 50),
     ['small-dungeon-font'] = love.graphics.newFont('fonts/DungeonFont.ttf', 38),
     ['smaller-dungeon-font'] = love.graphics.newFont('fonts/DungeonFont.ttf', 30)

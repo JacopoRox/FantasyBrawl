@@ -8,11 +8,11 @@ StartState = Class{__includes = BaseState}
 
 function StartState:init()
     gBackground = Background('forest')
-    self.menu = Menu(MENU_DEFS['start'])
+    self.menu = Menu()
+    self.menu.stateMachine:change('start')
 end
 
 function StartState:update(dt)
-    local index = self.menu:getIndex()
     -- updates background
     gBackground:update(dt)
     -- updates the menu
@@ -22,7 +22,6 @@ end
 function StartState:render()
     -- renders the background
     gBackground:render()
-    -- renders the name of the game
-   -- love.graphics.printf({CARMINE, 'Fantasy Brawl'}, gFonts['big-dungeon-font'], 0, 100, GAME_WIDTH, 'center')
+    -- renders the start menu
     self.menu:render()
 end
