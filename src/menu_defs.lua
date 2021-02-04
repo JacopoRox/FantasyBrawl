@@ -21,27 +21,27 @@ MENU_DEFS = {
                 limit = GAME_WIDTH,
                 align = 'center',
                 string = 'Play',
-                font = gFonts['medium-dungeon-font'],
+                font = gFonts['medium-dungeon-font']
             },
             [2] = {
-                font = gFonts['medium-dungeon-font'],
                 x = 0,
                 y = 300,
                 limit = GAME_WIDTH,
                 align = 'center',
-                string = 'Options'
+                string = 'Options',
+                font = gFonts['medium-dungeon-font']
             },
             [3] = {
-                font = gFonts['medium-dungeon-font'],
                 x = 0,
                 y = 350,
                 limit = GAME_WIDTH,
                 align = 'center',
-                string = 'Exit'
+                string = 'Exit',
+                font = gFonts['medium-dungeon-font']
             }
         },
         ['color'] = CARMINE,
-        ['selection'] = SIENNA
+        ['highlight'] = SIENNA
     },
     ['options'] = {
         ['title'] = {
@@ -50,7 +50,7 @@ MENU_DEFS = {
             limit = GAME_WIDTH,
             align = 'center',
             string = 'Menu',
-            font = gFonts['great-dungeon-font'],
+            font = gFonts['great-dungeon-font']
         },
         ['strings'] = {
             [1] = {
@@ -87,6 +87,61 @@ MENU_DEFS = {
             },
         },
         ['color'] = CARMINE,
-        ['selection'] = SIENNA
+        ['highlight'] = SIENNA
+    },
+    ['commands'] = {
+        ['title'] = {
+            x = 0,
+            y = 100,
+            limit = GAME_WIDTH,
+            align = 'center',
+            string = 'Commands Selection',
+            font = gFonts['great-dungeon-font'],
+        },
+        ['strings'] = {
+            [1] = {
+                x = 0,
+                y = 250,
+                limit = GAME_WIDTH,
+                align = 'center',
+                string = 'Attack: '..GetKey(STRIKE),
+                font = gFonts['medium-dungeon-font'],
+            },
+            [2] = {
+                x = 0,
+                y = 300,
+                limit = GAME_WIDTH,
+                align = 'center',
+                string = 'Shoot: '..GetKey(RANGED),
+                font = gFonts['medium-dungeon-font'],
+            },
+            [3] = {
+                x = 0,
+                y = 350,
+                limit = GAME_WIDTH,
+                align = 'center',
+                string = 'Jump: '..GetKey(JUMP),
+                font = gFonts['medium-dungeon-font']
+            },
+            [4] = {
+                x = 0,
+                y = 400,
+                limit = GAME_WIDTH,
+                align = 'center',
+                string = 'Move Right: '..GetKey(RIGHT),
+                font = gFonts['medium-dungeon-font']
+            },
+            [5] = {
+                x = 0,
+                y = 450,
+                limit = GAME_WIDTH,
+                align = 'center',
+                string = 'Move Left: '..GetKey(LEFT),
+                font = gFonts['medium-dungeon-font'],
+            },
+        },
+        ['color'] = CARMINE,
+        ['highlight'] = SIENNA,
+        ['selected'] = RED
     }
 }

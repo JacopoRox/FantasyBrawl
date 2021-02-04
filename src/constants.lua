@@ -16,6 +16,7 @@ VOLUME = 0.5
 -- colors
 CARMINE = {150/225, 0/255, 24/255}
 SIENNA = {32/225, 0, 0}
+RED = {1, 0, 0}
 WHITE = {1, 1, 1}
 BLACK = {0, 0, 0}
 
@@ -29,3 +30,13 @@ ENTER = 'return'
 ESC = 'escape'
 UP = 'up'
 DOWN = 'down'
+
+-- stores names to be displayed in the Menu
+KEYS_NAME = {
+    ['space'] = 'Spacebar',
+    ['left'] = 'Left Arrow',
+    ['right'] = 'Right Arrow',
+    ['up'] = 'Up Arrow',
+    ['down'] = 'Down Arrow',
+    ['escape'] = 'Esc'
+}

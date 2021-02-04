@@ -21,7 +21,7 @@ function MenuOptionsState:init(menu, def)
 
     -- colors used to render the options
     self.color = def.color or {0, 0, 0}
-    self.selection = def.selection or {1, 1, 1}
+    self.highlight = def.highlight or {1, 1, 1}
 end
 
 function MenuOptionsState:update(dt)
@@ -59,7 +59,7 @@ function MenuOptionsState:render()
         if k ~= self.index then
             love.graphics.printf({self.color, v.string}, v.font, v.x, v.y, v.limit, v.align)
         else
-            love.graphics.printf({self.selection, v.string}, v.font, v.x, v.y, v.limit, v.align)
+            love.graphics.printf({self.highlight, v.string}, v.font, v.x, v.y, v.limit, v.align)
         end
     end
 end

@@ -32,6 +32,7 @@ require 'src/states/background/BackgroundSelectionState'
 
 require 'src/states/menu/MenuStartState'
 require 'src/states/menu/MenuOptionsState'
+require 'src/states/menu/MenuCommandsState'
 
 require 'src/states/game/StartState'
 require 'src/states/game/SelectionState'
