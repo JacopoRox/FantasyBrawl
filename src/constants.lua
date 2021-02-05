@@ -16,7 +16,8 @@ VOLUME = 0.5
 -- colors
 CARMINE = {150/225, 0/255, 24/255}
 SIENNA = {32/225, 0, 0}
-RED = {1, 0, 0}
+LSIENNA = {255/255, 43/255, 100/255}
+RED = {1, 0, 1}
 WHITE = {1, 1, 1}
 BLACK = {0, 0, 0}
 
@@ -38,5 +39,6 @@ KEYS_NAME = {
     ['right'] = 'Right Arrow',
     ['up'] = 'Up Arrow',
     ['down'] = 'Down Arrow',
-    ['escape'] = 'Esc'
+    ['escape'] = 'Esc',
+    ['return'] = 'Return'
 }

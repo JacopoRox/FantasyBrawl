@@ -11,6 +11,7 @@ function MenuCommandsState:init(menu, def)
     self.menu = menu
 
     self.index = 1
+
     -- the options to be displayed
     self.title = def.title
     self.strings = def.strings
@@ -22,7 +23,7 @@ function MenuCommandsState:init(menu, def)
     -- colors used to render the options
     self.color = def.color or {0, 0, 0}
     self.highlight = def.highlight or {1, 1, 1}
-    self.selColor = WHITE
+    self.selColor = {163/255, 95/255, 27/255}
 
     -- keep track of wheter we are selecting or not
     self.selection = false
@@ -33,9 +34,28 @@ function MenuCommandsState:update(dt)
     self.timer = self.timer + dt
     -- checks input and switch index accordingly resetting timer
     if self.selection then
-        if self.index == 1 then
-            STRIKE = 'ciao'
+        if love.keyboard.PressedThisFrame(ESC) then
+            self.selection = false
+            self.selected = nil
+        elseif self.index == 1 then
+            STRIKE = self:assignKey() or STRIKE
+            self.strings[1].string = 'Attack: '..GetKey(STRIKE)
+        elseif self.index == 2 then
+            RANGED = self:assignKey() or RANGED
+            self.strings[2].string = 'Shoot: '..GetKey(RANGED)
+        elseif self.index == 3 then
+            JUMP = self:assignKey() or JUMP
+            self.strings[2].string = 'Jump: '..GetKey(JUMP)
+        elseif self.index == 4 then
+            RIGHT = self:assignKey() or RIGHT
+            self.strings[4].string = 'Move Right: '..GetKey(RIGHT)
+        elseif self.index == 5 then
+            LEFT = self:assignKey() or LEFT
+            self.strings[5].string = 'Move Left: '..GetKey(LEFT)
         end
+    -- if ENTER is pressed change the game state according to the menu index
+    elseif love.keyboard.PressedThisFrame(ENTER) then
+        self.selection = true
     elseif love.keyboard.PressedThisFrame(DOWN) or (love.keyboard.isDown(DOWN) and self.timer > self.interval) then
         self.index = math.max(1, (self.index + 1) % (#self.strings + 1))
         self.timer = 0
@@ -44,12 +64,12 @@ function MenuCommandsState:update(dt)
         if self.index == 0 then self.index = #self.strings end
         self.timer = 0
     end
+end
 
-    -- if ENTER is pressed change the game state according to the menu index
-    if love.keyboard.PressedThisFrame(ENTER) then
-        self.selection = true
-        self.selected = self.index
-    end
+-- return the last pressed key if the key was pressed this frame
+function MenuCommandsState:assignKey()
+    local key = (love.keyboard.pressed[LastPressed] and LastPressed)
+    if key then return key else return false end
 end
 
 function MenuCommandsState:render()
@@ -58,7 +78,7 @@ function MenuCommandsState:render()
     -- renders all options
     for k, v in pairs(self.strings) do
         if k == self.index then
-            if k == self.selected then
+            if self.selection then
                 love.graphics.printf({self.selColor, v.string}, v.font, v.x, v.y, v.limit, v.align)
             else
                 love.graphics.printf({self.highlight, v.string}, v.font, v.x, v.y, v.limit, v.align)
