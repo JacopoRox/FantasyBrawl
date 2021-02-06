@@ -20,6 +20,7 @@ require 'src/Util'
 require 'src/Box'
 require 'src/Healthbar'
 require 'src/Menu'
+require 'src/Selection'
 require 'src/StateMachine'
 
 require 'src/entity_defs'

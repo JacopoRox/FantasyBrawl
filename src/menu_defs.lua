@@ -44,50 +44,31 @@ MENU_DEFS = {
         ['highlight'] = SIENNA
     },
     ['options'] = {
-        ['title'] = {
-            x = 0,
-            y = 100,
-            limit = GAME_WIDTH,
-            align = 'center',
-            string = 'Menu',
-            font = gFonts['great-dungeon-font']
-        },
-        ['strings'] = {
-            [1] = {
-                x = 0,
-                y = 250,
-                limit = GAME_WIDTH,
-                align = 'center',
-                string = 'Volume',
-                font = gFonts['medium-dungeon-font'],
+        x = 0,
+        y = 250,
+        width = GAME_WIDTH,
+        height = 200,
+        color = CARMINE,
+        highlight = SIENNA,
+        font = gFonts['medium-dungeon-font'],
+        items = {
+            {
+                text = 'Volume',
+                onSelect = function ()  end
             },
-            [2] = {
-                font = gFonts['medium-dungeon-font'],
-                x = 0,
-                y = 300,
-                limit = GAME_WIDTH,
-                align = 'center',
-                string = 'Commands'
+            {
+                text = 'Commands',
+                onSelect = function ()  end
             },
-            [3] = {
-                font = gFonts['medium-dungeon-font'],
-                x = 0,
-                y = 350,
-                limit = GAME_WIDTH,
-                align = 'center',
-                string = 'Graphics'
+            {
+                text = 'Graphics',
+                onSelect = function ()  end
             },
-            [4] = {
-                font = gFonts['medium-dungeon-font'],
-                x = 0,
-                y = 400,
-                limit = GAME_WIDTH,
-                align = 'center',
-                string = 'Back'
+            {
+                text = 'Back',
+                onSelect = function ()  end
             },
-        },
-        ['color'] = CARMINE,
-        ['highlight'] = SIENNA
+        }
     },
     ['commands'] = {
         ['title'] = {

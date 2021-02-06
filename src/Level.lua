@@ -1,3 +1,9 @@
+--[[
+    Fantasy Brawl
+    Author: Jacopo Rossi
+    CS50 final project
+]]
+
 Level = Class{}
 
 function Level:init(player)
