@@ -55,7 +55,7 @@ function Selection:render()
         else
             love.graphics.printf({self.color, self.items[i].text}, self.font, self.x, paddedY, self.width, 'center')
         end
-    
+
         currentY = currentY + self.gapHeight
     end
 end

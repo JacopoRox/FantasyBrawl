@@ -36,9 +36,9 @@ end
 
 function MenuStartState:update(dt)
     self.selection:update(dt)
- 
+
     if love.keyboard.PressedThisFrame(ESC) then
-        self.menu.stateMachine:change('start')
+        love.event.quit()
     elseif love.keyboard.PressedThisFrame(ENTER) then
         self.selection.items[self.selection.index].onSelect()
     end

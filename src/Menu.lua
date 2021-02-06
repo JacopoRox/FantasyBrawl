@@ -10,7 +10,9 @@ function Menu:init()
     self.stateMachine = StateMachine {
         ['start'] = function () return MenuStartState(self) end,
         ['options'] = function () return MenuOptionsState(self) end,
-        ['commands'] = function () return MenuCommandsState(self) end
+        ['commands'] = function () return MenuCommandsState(self) end,
+        ['volume'] = function () return MenuVolumeState(self) end,
+        ['graphics'] = function () return MenuGraphicsState(self) end
     }
 end
 

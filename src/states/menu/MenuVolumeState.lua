@@ -4,43 +4,54 @@
     CS50 final project
 ]]
 
-OptionsState = Class{__includes = BaseState}
+MenuVolumeState = Class{__includes = BaseState}
 
-function OptionsState:init()
-    self.volume = VOLUME
-    self.width = 100
-    self.height = 20
-    self.menu = Menu(MENU_DEFS['options'])
+function MenuVolumeState:init(menu)
+    -- reference to the menu
+    self.menu = menu
+
+    self.selection = Selection {
+        x = 0,
+        y = 250,
+        width = GAME_WIDTH,
+        height = 250,
+        color = CARMINE,
+        highlight = SIENNA,
+        font = gFonts['medium-dungeon-font'],
+        items = {
+            {
+                text = 'Volume: '
+            }
+        }
+    }
+    self.timer = 0
 end
 
-function OptionsState:update(dt)
-    gBackground:update(dt)
-    self.menu:update(dt)
-end
-
-function OptionsState:displayVolume()
-    love.graphics.printf('Volume:', gFonts['small-dungeon-font'],
-        math.floor(0), math.floor(GAME_HEIGHT/2), GAME_WIDTH, 'center')
-
-    love.graphics.setColor(CARMINE)
-    love.graphics.rectangle('line', GAME_WIDTH/2 + 50, GAME_HEIGHT/2, self.width, self.height)
-    love.graphics.rectangle('fill', GAME_WIDTH/2 + 50, GAME_HEIGHT/2, self.width * self.volume, self.height)
-    love.graphics.setColor(WHITE)
-end
-
-function OptionsState:displayCommands()
-    love.graphics.printf(' Arrows : Run\nSpacebar: Jump\nS: Attack\nD: Shoot', gFonts['smaller-dungeon-font'],
-        0, 450, GAME_WIDTH, 'center')
-end
-
-function OptionsState:render()
-    gBackground:render()
-    if self.level then
-        love.graphics.push()
-        love.graphics.translate(self.camera.x, 0)
-        self.player:render()
-        self.level:render()
-        love.graphics.pop()
+function MenuVolumeState:update(dt)
+    self.selection:update(dt)
+    self.timer = self.timer + dt
+    self:changeVolume(LastPressed)
+    if love.keyboard.PressedThisFrame(ESC) then
+        self.menu.stateMachine:change('options')
     end
-    self.menu:render()
+end
+
+function MenuVolumeState:changeVolume(key)
+    if love.keyboard.pressed[key] or (love.keyboard.isDown(key) and self.timer > 0.2) then
+        if key == 'right' then
+            VOLUME = math.min(VOLUME + 0.1, 1)
+            love.audio.setVolume(VOLUME)
+            self.timer = 0
+        elseif key == 'left' then
+            VOLUME = math.max(VOLUME - 0.1, 0)
+            love.audio.setVolume(VOLUME)
+            self.timer = 0
+        end
+    end
+end
+
+function MenuVolumeState:render()
+    love.graphics.printf({CARMINE, 'Menu'}, gFonts['great-dungeon-font'], 0, 100, GAME_WIDTH, 'center')
+    self.selection:render()
+    love.graphics.print(VOLUME)
 end

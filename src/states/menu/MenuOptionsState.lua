@@ -28,7 +28,7 @@ function MenuOptionsState:init(menu)
             },
             {
                 text = 'Graphics',
-                onSelect = function ()  end
+                onSelect = function () self.menu.stateMachine:change('graphics') end
             },
             {
                 text = 'Back',
