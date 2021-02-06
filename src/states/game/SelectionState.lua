@@ -43,6 +43,19 @@ function SelectionState:update(dt)
     end
 end
 
+function SelectionState:movebox(box)
+    -- move the selection box to the right
+    if love.keyboard.PressedThisFrame(RIGHT) then
+        box.x = math.min(box.x + GAME_WIDTH/4, GAME_WIDTH * 3/4 - box.width/2)
+        box.index = math.min(box.index + 1, 3)
+    end
+    -- move the selection box to the left
+    if love.keyboard.PressedThisFrame(LEFT) then
+        box.x = math.max(box.x - GAME_WIDTH/4, GAME_WIDTH/4 - box.width/2)
+        box.index = math.max(box.index - 1, 1)
+    end
+end
+
 function SelectionState:render()
     -- render the background
     gBackground:render()
@@ -59,18 +72,5 @@ function SelectionState:render()
     -- render the characters' animations
     for k in pairs(anims) do
         anims[k]:render(k * GAME_WIDTH/4, GAME_HEIGHT/2 + 50, 3, 3)
-    end
-end
-
-function SelectionState:movebox(box)
-    -- move the selection box to the right
-    if love.keyboard.PressedThisFrame(RIGHT) then
-        box.x = math.min(box.x + GAME_WIDTH/4, GAME_WIDTH * 3/4 - box.width/2)
-        box.index = math.min(box.index + 1, 3)
-    end
-    -- move the selection box to the left
-    if love.keyboard.PressedThisFrame(LEFT) then
-        box.x = math.max(box.x - GAME_WIDTH/4, GAME_WIDTH/4 - box.width/2)
-        box.index = math.max(box.index - 1, 1)
     end
 end

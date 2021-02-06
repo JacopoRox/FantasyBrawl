@@ -20,6 +20,7 @@ require 'src/Util'
 require 'src/Box'
 require 'src/Healthbar'
 require 'src/Menu'
+require 'src/Selection'
 require 'src/StateMachine'
 
 require 'src/entity_defs'
@@ -256,8 +257,6 @@ gFonts = {
     ['small-dungeon-font'] = love.graphics.newFont('fonts/DungeonFont.ttf', 38),
     ['smaller-dungeon-font'] = love.graphics.newFont('fonts/DungeonFont.ttf', 30)
 }
-
-require 'src/menu_defs'
 
 gShaders = {
     ['white'] = love.graphics.newShader[[

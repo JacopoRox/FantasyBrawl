@@ -8,9 +8,9 @@ Menu = Class{}
 
 function Menu:init()
     self.stateMachine = StateMachine {
-        ['start'] = function () return MenuStartState(self, MENU_DEFS['start']) end,
-        ['options'] = function () return MenuOptionsState(self, MENU_DEFS['options']) end,
-        ['commands'] = function () return MenuCommandsState(self, MENU_DEFS['commands']) end,
+        ['start'] = function () return MenuStartState(self) end,
+        ['options'] = function () return MenuOptionsState(self) end,
+        ['commands'] = function () return MenuCommandsState(self) end
     }
 end
 
