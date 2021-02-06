@@ -101,7 +101,7 @@ MENU_DEFS = {
         ['strings'] = {
             [1] = {
                 x = 0,
-                y = 250,
+                y = 200,
                 limit = GAME_WIDTH,
                 align = 'center',
                 string = 'Attack: '..GetKey(STRIKE),
@@ -109,7 +109,7 @@ MENU_DEFS = {
             },
             [2] = {
                 x = 0,
-                y = 300,
+                y = 250,
                 limit = GAME_WIDTH,
                 align = 'center',
                 string = 'Shoot: '..GetKey(RANGED),
@@ -117,7 +117,7 @@ MENU_DEFS = {
             },
             [3] = {
                 x = 0,
-                y = 350,
+                y = 300,
                 limit = GAME_WIDTH,
                 align = 'center',
                 string = 'Jump: '..GetKey(JUMP),
@@ -125,7 +125,7 @@ MENU_DEFS = {
             },
             [4] = {
                 x = 0,
-                y = 400,
+                y = 350,
                 limit = GAME_WIDTH,
                 align = 'center',
                 string = 'Move Right: '..GetKey(RIGHT),
@@ -133,10 +133,18 @@ MENU_DEFS = {
             },
             [5] = {
                 x = 0,
-                y = 450,
+                y = 400,
                 limit = GAME_WIDTH,
                 align = 'center',
                 string = 'Move Left: '..GetKey(LEFT),
+                font = gFonts['medium-dungeon-font'],
+            },
+            [6] = {
+                x = 0,
+                y = 450,
+                limit = GAME_WIDTH,
+                align = 'center',
+                string = 'Reset Default',
                 font = gFonts['medium-dungeon-font'],
             },
         },

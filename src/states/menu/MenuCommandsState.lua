@@ -25,7 +25,7 @@ function MenuCommandsState:init(menu, def)
     self.highlight = def.highlight or WHITE
     self.selColor = def.selColor or VIOLET
 
-    -- keep track of wheter we are selecting or not
+    -- keep track of wheter we are changing one command or not
     self.selection = false
 end
 
@@ -36,7 +36,7 @@ function MenuCommandsState:update(dt)
     if not self.selection and love.keyboard.PressedThisFrame(ESC) then
         self.menu.stateMachine:change('options')
     end
-
+    -- if we are selecting a new key it gets assigned the last key we pressed
     if self.selection then
         if love.keyboard.PressedThisFrame(ESC) then
             self.selection = false
@@ -57,9 +57,14 @@ function MenuCommandsState:update(dt)
             LEFT = self:assignKey() or LEFT
             self.strings[5].string = 'Move Left: '..GetKey(LEFT)
         end
-    -- if ENTER is pressed change the game state according to the menu index
+    -- else if ENTER is pressed change the game state according to the menu index
     elseif love.keyboard.PressedThisFrame(ENTER) then
-        self.selection = true
+        if self.index ~= 6 then
+            self.selection = true
+        else
+            self:resetDefault()
+        end
+    -- if we are not selecting a new key we can scroll the Menu using arrows
     elseif love.keyboard.PressedThisFrame(DOWN) or (love.keyboard.isDown(DOWN) and self.timer > self.interval) then
         self.index = math.max(1, (self.index + 1) % (#self.strings + 1))
         self.timer = 0
@@ -68,6 +73,19 @@ function MenuCommandsState:update(dt)
         if self.index == 0 then self.index = #self.strings end
         self.timer = 0
     end
+end
+
+function MenuCommandsState:resetDefault()
+    STRIKE = DEFAULT_KEYS['strike']
+    self.strings[1].string = 'Attack: '..GetKey(STRIKE)
+    RANGED = DEFAULT_KEYS['shoot']
+    self.strings[2].string = 'Shoot: '..GetKey(RANGED)
+    JUMP = DEFAULT_KEYS['jump']
+    self.strings[3].string = 'Jump: '..GetKey(JUMP)
+    RIGHT = DEFAULT_KEYS['right']
+    self.strings[4].string = 'Move Right: '..GetKey(RIGHT)
+    LEFT = DEFAULT_KEYS['left']
+    self.strings[5].string = 'Move Left: '..GetKey(LEFT)
 end
 
 -- return the last pressed key if the key was pressed this frame
