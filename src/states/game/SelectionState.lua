@@ -34,6 +34,8 @@ function SelectionState:update(dt)
         gStateMachine:change('play', {
             player = Hero(ENTITY_DEFS[self.types[self.box.index]])
         })
+    elseif love.keyboard.PressedThisFrame(ESC) then
+        gStateMachine:change('start')
     end
     -- updates the animation of the heroes
     for k, v in pairs(self.animations) do

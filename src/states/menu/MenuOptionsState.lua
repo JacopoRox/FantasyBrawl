@@ -49,6 +49,10 @@ function MenuOptionsState:update(dt)
             self.menu.stateMachine:change('start')
         end
     end
+
+    if love.keyboard.PressedThisFrame(ESC) then
+        self.menu.stateMachine:change('start')
+    end
 end
 
 function MenuOptionsState:render()

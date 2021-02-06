@@ -21,9 +21,9 @@ function MenuCommandsState:init(menu, def)
     self.interval = def.interval or 0.2
 
     -- colors used to render the options
-    self.color = def.color or {0, 0, 0}
-    self.highlight = def.highlight or {1, 1, 1}
-    self.selColor = {163/255, 95/255, 27/255}
+    self.color = def.color or BLACK
+    self.highlight = def.highlight or WHITE
+    self.selColor = def.selColor or VIOLET
 
     -- keep track of wheter we are selecting or not
     self.selection = false
@@ -33,6 +33,10 @@ function MenuCommandsState:update(dt)
     -- timer to keep track of time
     self.timer = self.timer + dt
     -- checks input and switch index accordingly resetting timer
+    if not self.selection and love.keyboard.PressedThisFrame(ESC) then
+        self.menu.stateMachine:change('options')
+    end
+
     if self.selection then
         if love.keyboard.PressedThisFrame(ESC) then
             self.selection = false
@@ -45,7 +49,7 @@ function MenuCommandsState:update(dt)
             self.strings[2].string = 'Shoot: '..GetKey(RANGED)
         elseif self.index == 3 then
             JUMP = self:assignKey() or JUMP
-            self.strings[2].string = 'Jump: '..GetKey(JUMP)
+            self.strings[3].string = 'Jump: '..GetKey(JUMP)
         elseif self.index == 4 then
             RIGHT = self:assignKey() or RIGHT
             self.strings[4].string = 'Move Right: '..GetKey(RIGHT)
