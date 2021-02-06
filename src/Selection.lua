@@ -11,6 +11,7 @@ function Selection:init(def)
     self.items = def.items
     self.x = def.x
     self.y = def.y
+    self.align = def.align or 'center'
 
     self.height = def.height
     self.width = def.width
@@ -43,17 +44,19 @@ function Selection:update(dt)
     end
 end
 
-function Selection:render()
+function Selection:render(def)
     local currentY = self.y
+    local variables = def or {}
 
     for i = 1, #self.items do
         local paddedY = currentY + (self.gapHeight / 2) - self.font:getHeight() / 2
+        local variable = variables[i] or ''
 
         -- draw selection marker if we're at the right index
         if i == self.index then
-            love.graphics.printf({self.highlight, self.items[i].text}, self.font, self.x, paddedY, self.width, 'center')
+            love.graphics.printf({self.highlight, self.items[i].text..variable}, self.font, self.x, paddedY, self.width, self.align)
         else
-            love.graphics.printf({self.color, self.items[i].text}, self.font, self.x, paddedY, self.width, 'center')
+            love.graphics.printf({self.color, self.items[i].text..variable}, self.font, self.x, paddedY, self.width, self.align)
         end
 
         currentY = currentY + self.gapHeight

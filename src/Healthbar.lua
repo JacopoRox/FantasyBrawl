@@ -25,14 +25,14 @@ end
 
 function Healthbar:render()
     -- health is equal to the ratio between current and initial health
-    local health = self.entity.health / self.initialHealth
+    local ratio = self.entity.health / self.initialHealth
     -- draws a red rectagle
-    love.graphics.setColor(1, 0, 0)
+    love.graphics.setColor(RED)
     love.graphics.rectangle('fill', (self.x), (self.y), self.width, self.height)
     -- draws a green unfilled rectagle
-    love.graphics.setColor(0, 1, 0)
+    love.graphics.setColor(GREEN)
     love.graphics.rectangle('line', (self.x), (self.y), self.width, self.height)
     -- draws a green filled rectagle regulating the width according to the health of the entity
-    love.graphics.rectangle('fill', (self.x), (self.y), self.width * health, self.height)
-    love.graphics.setColor(1, 1, 1)
+    love.graphics.rectangle('fill', (self.x), (self.y), self.width * ratio, self.height)
+    love.graphics.setColor(WHITE)
 end

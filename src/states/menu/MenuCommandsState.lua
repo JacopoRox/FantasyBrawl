@@ -39,6 +39,10 @@ function MenuCommandsState:init(menu)
                 text = 'Move Left: ',
                 onSelect = function ()  end
             },
+            {
+                text = 'Reset Default',
+                onSelect = function () self:resetDefault() end
+            }
         }
     }
 end
@@ -48,6 +52,8 @@ function MenuCommandsState:update(dt)
 
     if love.keyboard.PressedThisFrame(ESC) then
         self.menu.stateMachine:change('options')
+    elseif love.keyboard.PressedThisFrame(ENTER) then
+        self.selection.items[self.selection.index].onSelect()
     end
 end
 
@@ -72,5 +78,11 @@ end
 
 function MenuCommandsState:render()
     love.graphics.printf({CARMINE, 'Menu'}, gFonts['great-dungeon-font'], 0, 100, GAME_WIDTH, 'center')
-    self.selection:render()
+    self.selection:render {
+        GetKey(STRIKE),
+        GetKey(RANGED),
+        GetKey(JUMP),
+        GetKey(RIGHT),
+        GetKey(LEFT),
+    }
 end
