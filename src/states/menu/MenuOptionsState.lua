@@ -13,18 +13,18 @@ function MenuOptionsState:init(menu)
         x = 0,
         y = 250,
         width = GAME_WIDTH,
-        height = 200,
+        height = 250,
         color = CARMINE,
         highlight = SIENNA,
         font = gFonts['medium-dungeon-font'],
         items = {
             {
                 text = 'Volume',
-                onSelect = function ()  end
+                onSelect = function () self.menu.stateMachine:change('volume')  end
             },
             {
                 text = 'Commands',
-                onSelect = function ()  end
+                onSelect = function () self.menu.stateMachine:change('commands') end
             },
             {
                 text = 'Graphics',
@@ -32,7 +32,7 @@ function MenuOptionsState:init(menu)
             },
             {
                 text = 'Back',
-                onSelect = function ()  end
+                onSelect = function () self.menu.stateMachine:change('start') end
             },
         }
     }
@@ -40,12 +40,15 @@ end
 
 function MenuOptionsState:update(dt)
     self.selection:update(dt)
-
+    
     if love.keyboard.PressedThisFrame(ESC) then
         self.menu.stateMachine:change('start')
+    elseif love.keyboard.PressedThisFrame(ENTER) then
+        self.selection.items[self.selection.index].onSelect()
     end
 end
 
 function MenuOptionsState:render()
-   self.selection:render()
+    love.graphics.printf({CARMINE, 'Menu'}, gFonts['great-dungeon-font'], 0, 100, GAME_WIDTH, 'center')
+    self.selection:render()
 end
