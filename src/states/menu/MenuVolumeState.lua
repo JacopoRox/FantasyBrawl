@@ -47,7 +47,7 @@ function MenuVolumeState:changeVolume(key)
             love.audio.setVolume(VOLUME)
             self.timer = 0
         elseif key == 'left' then
-            VOLUME = math.max(VOLUME - 0.05, 0)
+            VOLUME = math.max(math.floor((VOLUME - 0.05)*100)/100, 0)
             love.audio.setVolume(VOLUME)
             self.timer = 0
         end
