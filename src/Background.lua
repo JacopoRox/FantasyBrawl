@@ -8,9 +8,9 @@ Background = Class{}
 
 function Background:init(type)
     self.layers = self:generateLayers(type)
-    self.scale = 0.8
+    self.scale = 0.5
     self.loopingpoint = self.layers[1].texture:getWidth() * self.scale
-    self.offset = 150
+    self.offset = 0
     -- initiate the stateMachine and set the initial state to selection
     self.stateMachine = StateMachine {
         ['play'] = function () return BackgroundPlayState(self) end,
@@ -45,7 +45,7 @@ function Background:render()
     for i = 1, #layers do
         love.graphics.draw(layers[i].texture, layers[i].x, 0, 
             0, self.scale, self.scale, 0, self.offset)
-        love.graphics.draw(layers[i].texture, layers[i].x + self.loopingpoint, 0, 
+        love.graphics.draw(layers[i].texture, layers[i].x - self.loopingpoint, 0, 
             0, self.scale, self.scale, 0, self.offset)
     end
 end

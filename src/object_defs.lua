@@ -24,7 +24,7 @@ GAME_OBJECT_DEFS = {
                 offsetY = 10
             },
             explode = true,
-            y = WINDOW_HEIGHT - 32
+            y = GAME_HEIGHT - 32
     },
         ['skeleton'] = {
             strenght = 10,

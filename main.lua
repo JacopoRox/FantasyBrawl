@@ -11,9 +11,12 @@ function love.load()
     math.randomseed(os.time())
     math.random(); math.random(); math.random()
 
-    love.window.setMode(WINDOW_WIDTH, WINDOW_HEIGHT)
     love.window.setTitle('Fantasy Brawl')
 
+    -- initialize window with virtual resolution
+    push:setupScreen(GAME_WIDTH, GAME_HEIGHT, WINDOW_WIDTH, WINDOW_HEIGHT)
+
+    -- initiate global state machine and set it to the start state
     gStateMachine = StateMachine {
         ['start'] = function () return StartState() end,
         ['selection'] = function () return SelectionState() end,
@@ -23,7 +26,7 @@ function love.load()
     }
     gStateMachine:change('start')
 
-    love.audio.setVolume(0.2)
+    love.audio.setVolume(VOLUME)
     gSounds['background']:setLooping(true)
     gSounds['background']:play()
 
@@ -57,6 +60,13 @@ function love.update(dt)
     love.keyboard.pressed = {}
 end
 
+function love.resize(w, h)
+    WINDOW_WIDTH, WINDOW_HEIGHT = w, h
+    push:resize(w, h)
+end
+
 function love.draw()
+    push:apply('start')
     gStateMachine:render()
+    push:apply('end')
 end

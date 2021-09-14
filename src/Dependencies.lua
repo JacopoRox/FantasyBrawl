@@ -5,6 +5,7 @@
 ]]
 
 Class = require 'lib/class'
+push = require 'lib/push'
 
 require 'src/constants'
 
@@ -18,6 +19,8 @@ require 'src/Animation'
 require 'src/Util'
 require 'src/Box'
 require 'src/Healthbar'
+require 'src/Menu'
+require 'src/Selection'
 require 'src/StateMachine'
 
 require 'src/entity_defs'
@@ -27,6 +30,12 @@ require 'src/states/BaseState'
 
 require 'src/states/background/BackgroundPlayState'
 require 'src/states/background/BackgroundSelectionState'
+
+require 'src/states/menu/MenuStartState'
+require 'src/states/menu/MenuOptionsState'
+require 'src/states/menu/MenuCommandsState'
+require 'src/states/menu/MenuVolumeState'
+require 'src/states/menu/MenuGraphicsState'
 
 require 'src/states/game/StartState'
 require 'src/states/game/SelectionState'
@@ -244,9 +253,11 @@ gFrames = {
 gFonts = {
     ['big-half-elven'] = love.graphics.newFont('fonts/halfelven.ttf', 72),
     ['medium-half-elven'] = love.graphics.newFont('fonts/halfelven.ttf', 38),
-    ['big-dungeon-font'] = love.graphics.newFont('fonts/DungeonFont.ttf', 80),
+    ['big-dungeon-font'] = love.graphics.newFont('fonts/DungeonFont.ttf', 130),
+    ['great-dungeon-font'] = love.graphics.newFont('fonts/DungeonFont.ttf', 100),
     ['medium-dungeon-font'] = love.graphics.newFont('fonts/DungeonFont.ttf', 50),
-    ['small-dungeon-font'] = love.graphics.newFont('fonts/DungeonFont.ttf', 38)
+    ['small-dungeon-font'] = love.graphics.newFont('fonts/DungeonFont.ttf', 38),
+    ['smaller-dungeon-font'] = love.graphics.newFont('fonts/DungeonFont.ttf', 30)
 }
 
 gShaders = {

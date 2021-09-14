@@ -6,11 +6,13 @@
 
 Box = Class{}
 
-function Box:init(x, y, width, height)
+function Box:init(x, y, width, height, mode)
     self.width = width
     self.height = height
     self.x = x
     self.y = y
+    -- optional, default mode is line
+    self.mode = mode or 'line'
 end
 
 function Box:collides(target)
@@ -22,10 +24,10 @@ end
 function Box:update(x, y)
     -- updates the position of the box given new x and y
     self.x = x
-    self.y = y
+    self.y = y or self.y
 end
 
 function Box:render()
-    -- render the box if necessary during development
-    love.graphics.rectangle('line', self.x, self.y, self.width, self.height)
+    -- render the box
+    love.graphics.rectangle(self.mode, self.x, self.y, self.width, self.height)
 end

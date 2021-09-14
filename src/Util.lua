@@ -25,3 +25,12 @@ function GenerateQuads(sheet, tilewidth, tileheight)
 
     return quads
 end
+
+-- return a key name or the scancode for that key
+function GetKey(key)
+    if KEYS_NAME[key] then
+        return KEYS_NAME[key]
+    else
+        return key:upper()
+    end
+end

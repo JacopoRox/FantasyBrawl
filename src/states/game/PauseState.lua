@@ -9,7 +9,6 @@ PauseState = Class{__includes = BaseState}
 function PauseState:enter(params)
     self.level = params.level
     self.player = self.level.player
-    self.background = params.background
     self.camera = params.camera
 end
 
@@ -29,17 +28,17 @@ end
 function PauseState:render()
     local camera = self.camera
 
-    self.background:render()
+    gBackground:render()
     -- camera fallows the player
     love.graphics.translate(camera.x, 0)
     self.player:render()
     self.level:render()
     love.graphics.translate(-camera.x, 0)
     -- displays that the game is paused
-    love.graphics.setColor(150/225, 0/255, 24/255)
+    love.graphics.setColor(CARMINE)
     love.graphics.printf('Pause', gFonts['medium-dungeon-font'],
-        math.floor(0), math.floor(WINDOW_HEIGHT/2 - 50), WINDOW_WIDTH, 'center')
+        math.floor(0), math.floor(GAME_HEIGHT/2 - 50), GAME_WIDTH, 'center')
     love.graphics.printf('Press esc to resume', gFonts['small-dungeon-font'],
-        math.floor(0), math.floor(WINDOW_HEIGHT/3 + 100), WINDOW_WIDTH, 'center')
-    love.graphics.setColor(1, 1, 1)
+        math.floor(0), math.floor(GAME_HEIGHT/3 + 100), GAME_WIDTH, 'center')
+    love.graphics.setColor(WHITE)
 end
