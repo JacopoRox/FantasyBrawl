@@ -26,7 +26,7 @@ Here's the list of the commands to control your character:
 
 I made 3 playable characters and I tried to make them somewhat different from one another from a gameplay point of view. The warrior has the higher amount of strenght (he can oneshot the less resilient enemies) and has more life than the other heroes at the cost of a low attack speed. The samurai attacks really fast but could need a few hits to take down an enemy (expecially Mushrooms), more importantly he is the only character that is allowed to move during an attack making it possible for him to dodge and hit at the same time. Finally, the huntress has low damage output but she can shoot her lances from distance *kiting* enemies to death.
 
-##### Files description
+### Files description
 
 #### main.lua
 
