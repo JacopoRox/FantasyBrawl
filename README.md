@@ -2,7 +2,7 @@
 
 ## Video Demo:  <https://youtu.be/4tStpi74BCo>
 
-### Description
+### Game Description
 
 #### Introduction
 
@@ -26,7 +26,7 @@ Here's the list of the commands to control your character:
 
 I made 3 playable characters and I tried to make them somewhat different from one another from a gameplay point of view. The warrior has the higher amount of strenght (he can oneshot the less resilient enemies) and has more life than the other heroes at the cost of a low attack speed. The samurai attacks really fast but could need a few hits to take down an enemy (expecially Mushrooms), more importantly he is the only character that is allowed to move during an attack making it possible for him to dodge and hit at the same time. Finally, the huntress has low damage output but she can shoot her lances from distance *kiting* enemies to death.
 
-### Files description
+### Files Description
 
 #### main.lua
 
@@ -106,7 +106,7 @@ Both enemies and the player go invulnerable after taking damage. Enemies stay in
 An entity is flagged as dead at the end of its death animation. If dead, enemies get removed from the level.entities table: I could have simply prevent their rendering and updating after their death but I decided to remove them from the table to prevent memory wasting (long run could lead to the generation of lots of enemies). When the player itself is flagged as dead the global state machine state is changed to game-over and the run is over.
 The global state machine is composed of 5 states, the start state initiate the background and waits for user inputs (Press enter to play is displayed). When enter is pressed the .change function is called (passing in the background so that it keeps scrolling) and we enter the selection state. Here I wanted to display every hero in their idle state but instead of actually initiating 3 objects from the Hero class I decided to only create 3 animation (again for memory sake) passing in the idle texture and the idle collection of frames of each specific character. A box object is initiated and rendered, it is possible to move it thanks to the selectionstate.movebox function which also update a variable called box.index that allows the box to keep track of what character it is highlighting. When the character is selected (by pressing enter) an actual Hero object is initiated and passed to the play state through the change function and a new run is initiated. At the end of it, from the game over state it is possible to go back to a new selection state in order to allow the changing of the character and start a new run.
 
-##### Credits
+### Credits
 
 I would like to credit and thanks the authors of the amazing art I used to make Fantasy Brawl:
 
