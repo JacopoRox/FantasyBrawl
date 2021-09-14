@@ -21,26 +21,32 @@ function MenuCommandsState:init(menu)
         items = {
             {
                 text = 'Attack: ',
+                -- todo: implement changeble keys
                 onSelect = function ()  end
             },
             {
                 text = 'Shoot: ',
+                -- todo: implement changeble keys
                 onSelect = function ()  end
             },
             {
                 text = 'Jump: ',
+                -- todo: implement changeble keys
                 onSelect = function ()  end
             },
             {
                 text = 'Move Right: ',
+                -- todo: implement changeble keys
                 onSelect = function ()  end
             },
             {
                 text = 'Move Left: ',
+                -- todo: implement changeble keys
                 onSelect = function ()  end
             },
             {
                 text = 'Reset Default',
+                -- todo: implement changeble keys
                 onSelect = function () self:resetDefault() end
             }
         }
@@ -57,17 +63,13 @@ function MenuCommandsState:update(dt)
     end
 end
 
+-- reset all keys to default
 function MenuCommandsState:resetDefault()
     STRIKE = DEFAULT_KEYS['strike']
-    self.strings[1].string = 'Attack: '..GetKey(STRIKE)
     RANGED = DEFAULT_KEYS['shoot']
-    self.strings[2].string = 'Shoot: '..GetKey(RANGED)
     JUMP = DEFAULT_KEYS['jump']
-    self.strings[3].string = 'Jump: '..GetKey(JUMP)
     RIGHT = DEFAULT_KEYS['right']
-    self.strings[4].string = 'Move Right: '..GetKey(RIGHT)
     LEFT = DEFAULT_KEYS['left']
-    self.strings[5].string = 'Move Left: '..GetKey(LEFT)
 end
 
 -- return the last pressed key if the key was pressed this frame

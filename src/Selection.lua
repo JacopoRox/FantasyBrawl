@@ -19,7 +19,7 @@ function Selection:init(def)
 
     self.gapHeight = self.height / #self.items
 
-    self.index = 1
+    self.index = def.index or 1
 
     -- colors used to render the options
     self.color = def.color or BLACK
