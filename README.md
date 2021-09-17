@@ -21,6 +21,7 @@ Here's the list of the commands to control your character:
 - Jump: *up-arrow* or *spacebar*
 - Attack: *S*
 - Ranged attack: *D* **(Huntress only)**
+- Pause the game: *Esc*
 
 #### Heroes
 
